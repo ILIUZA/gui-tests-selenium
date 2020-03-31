@@ -40,14 +40,28 @@ def step_implementation(context):
 
 @given('I am on the new post page')
 def step_impl(context):
-    context.driver = webdriver.Chrome(ChromeDriverManager().install())
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    options.add_argument('--disable-infobars')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--no-sandbox')
+
+    context.driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+    #context.driver = webdriver.Chrome(ChromeDriverManager().install())
     page = NewPostPage(context.driver)
     context.driver.get(page.url)
 
 
 @given('I am on the post "(.*)" page')
 def step_impl(context, post_name):
-    context.driver = webdriver.Chrome(ChromeDriverManager().install())
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    options.add_argument('--disable-infobars')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--no-sandbox')
+
+    context.driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+    #context.driver = webdriver.Chrome(ChromeDriverManager().install())
     page = PostPage(context.driver)
     context.driver.get(page.url(post_name))
 
