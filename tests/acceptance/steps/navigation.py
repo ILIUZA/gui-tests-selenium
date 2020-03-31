@@ -22,6 +22,7 @@ def step_implementation(context):
     #context.driver = webdriver.Chrome(ChromeDriverManager().install())
     page = HomePage(context.driver)
     context.driver.get(page.url)
+    context.driver.implicitly_wait(20)
 
 
 @given('I am on the blog page')
@@ -36,6 +37,7 @@ def step_implementation(context):
     #context.driver = webdriver.Chrome(ChromeDriverManager().install())
     page = BlogPage(context.driver)
     context.driver.get(page.url)
+
 
 
 @given('I am on the new post page')

@@ -9,6 +9,7 @@ use_step_matcher('re')
 @then('There is a h1')
 def step_impl(context):
     page = BasePage(context.driver)
+    context.driver.implicitly_wait(20)
     assert page.h1.is_displayed()
 
 
