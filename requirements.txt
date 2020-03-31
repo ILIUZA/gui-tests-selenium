@@ -1,4 +1,4 @@
 Flask
-behave==1.2.5
+behave==1.2.6
 beautifulsoup4==4.5.3
 selenium==3.141.0
