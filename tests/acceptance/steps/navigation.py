@@ -12,58 +12,28 @@ use_step_matcher('re')
 
 @given('I am on the homepage')
 def step_implementation(context):
-    options = webdriver.ChromeOptions()
-    options.add_argument('headless')
-    options.add_argument('--disable-infobars')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--no-sandbox')
-
-    context.driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
-    #context.driver = webdriver.Chrome(ChromeDriverManager().install())
+    context.driver = webdriver.Chrome(ChromeDriverManager().install())
     page = HomePage(context.driver)
     context.driver.get(page.url)
-    context.driver.implicitly_wait(20)
 
 
 @given('I am on the blog page')
 def step_implementation(context):
-    options = webdriver.ChromeOptions()
-    options.add_argument('headless')
-    options.add_argument('--disable-infobars')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--no-sandbox')
-
-    context.driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
-    #context.driver = webdriver.Chrome(ChromeDriverManager().install())
+    context.driver = webdriver.Chrome(ChromeDriverManager().install())
     page = BlogPage(context.driver)
     context.driver.get(page.url)
 
 
-
 @given('I am on the new post page')
 def step_impl(context):
-    options = webdriver.ChromeOptions()
-    options.add_argument('headless')
-    options.add_argument('--disable-infobars')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--no-sandbox')
-
-    context.driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
-    #context.driver = webdriver.Chrome(ChromeDriverManager().install())
+    context.driver = webdriver.Chrome(ChromeDriverManager().install())
     page = NewPostPage(context.driver)
     context.driver.get(page.url)
 
 
 @given('I am on the post "(.*)" page')
 def step_impl(context, post_name):
-    options = webdriver.ChromeOptions()
-    options.add_argument('headless')
-    options.add_argument('--disable-infobars')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--no-sandbox')
-
-    context.driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
-    #context.driver = webdriver.Chrome(ChromeDriverManager().install())
+    context.driver = webdriver.Chrome(ChromeDriverManager().install())
     page = PostPage(context.driver)
     context.driver.get(page.url(post_name))
 
