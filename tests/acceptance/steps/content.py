@@ -10,12 +10,14 @@ use_step_matcher('re')
 def step_impl(context):
     page = BasePage(context.driver)
     context.driver.maximize_window()
+    context.driver.implicitly_wait(10)
     assert page.h1.is_displayed()
 
 
 @step('The tag has content "(.*)"')
 def step_impl(context, content):
     page = BasePage(context.driver)
+    context.driver.implicitly_wait(10)
     assert content in page.h1.text
 
 

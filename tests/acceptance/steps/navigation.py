@@ -31,6 +31,7 @@ def step_implementation(context):
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--no-sandbox')
     context.driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+    context.driver.implicitly_wait(10)
     #     context.driver = webdriver.Chrome(ChromeDriverManager().install())
     page = BlogPage(context.driver)
     context.driver.get(page.url)
@@ -52,6 +53,7 @@ def step_impl(context):
 @given('I am on the post "(.*)" page')
 def step_impl(context, post_name):
     options = webdriver.ChromeOptions()
+    options.add_argument('--dns-prefetch-disable')
     options.add_argument('headless')
     options.add_argument('--disable-infobars')
     options.add_argument('--disable-dev-shm-usage')
