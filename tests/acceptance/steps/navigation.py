@@ -35,7 +35,6 @@ def step_implementation(context):
     #     context.driver = webdriver.Chrome(ChromeDriverManager().install())
     page = BlogPage(context.driver)
     context.driver.get(page.url)
-    context.driver.implicitly_wait(10)
 
 
 @given('I am on the new post page')

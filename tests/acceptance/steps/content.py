@@ -14,8 +14,7 @@ use_step_matcher('re')
 def step_impl(context):
     page = BasePage(context.driver)
     context.driver.maximize_window()
-    context.driver.implicitly_wait(3)
-    WebDriverWait(context.driver, 5).until(
+    WebDriverWait(context.driver, 15).until(
         expected_conditions.visibility_of_all_elements_located(BasePageLocators.H1))
     assert page.h1.is_displayed()
 
@@ -23,9 +22,6 @@ def step_impl(context):
 @step('The tag has content "(.*)"')
 def step_impl(context, content):
     page = BasePage(context.driver)
-    context.driver.implicitly_wait(3)
-    WebDriverWait(context.driver, 5).until(
-        expected_conditions.visibility_of_all_elements_located(BasePageLocators.H1))
     assert content in page.h1.text
 
 
