@@ -8,5 +8,4 @@ install:
   - "pip install webdriver-manager"
   - "pip install -U behave"
 script:
-  - "python app.py"
-  - "python -m behave tests/acceptance"
+  - python app.py && python -m behave tests/acceptance
