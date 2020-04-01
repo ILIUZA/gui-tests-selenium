@@ -1,4 +1,8 @@
 from behave import *
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+
+from tests.acceptance.locators.base_page import BasePageLocators
 from tests.acceptance.page_model.base_page import BasePage
 from tests.acceptance.page_model.blog_page import BlogPage
 from tests.acceptance.page_model.post_page import PostPage
@@ -10,14 +14,18 @@ use_step_matcher('re')
 def step_impl(context):
     page = BasePage(context.driver)
     context.driver.maximize_window()
-    context.driver.implicitly_wait(10)
+    context.driver.implicitly_wait(3)
+    WebDriverWait(context.driver, 5).until(
+        expected_conditions.visibility_of_all_elements_located(BasePageLocators.H1))
     assert page.h1.is_displayed()
 
 
 @step('The tag has content "(.*)"')
 def step_impl(context, content):
     page = BasePage(context.driver)
-    context.driver.implicitly_wait(10)
+    context.driver.implicitly_wait(3)
+    WebDriverWait(context.driver, 5).until(
+        expected_conditions.visibility_of_all_elements_located(BasePageLocators.H1))
     assert content in page.h1.text
 
 
